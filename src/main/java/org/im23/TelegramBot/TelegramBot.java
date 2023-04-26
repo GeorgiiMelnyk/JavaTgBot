@@ -1,14 +1,23 @@
-package org.im23;
+package org.im23.TelegramBot;
 
-/*import java.io.IOException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class TelegramBot {
+    static String botToken = "6062859401:AAG74nVt9vJLJYxm44P52NelVNJqbGNKDWA";
+    static String chatId = "508340152";
     public static void main(String[] args) throws IOException {
-        String botToken = "6062859401:AAG74nVt9vJLJYxm44P52NelVNJqbGNKDWA";
-        String chatId = "508340152";
+    Scanner sc = new Scanner(System.in);
+    int choice = sc.nextInt();
+    //sc.close();
+        System.out.println(choice);
+    if (choice == 1) {
+        System.out.println(choice);
+
         String message = "yo";
         String urlString = String.format("https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s", botToken, chatId, message);
         URL url = new URL(urlString);
@@ -24,9 +33,22 @@ public class TelegramBot {
             System.out.println(scanner.nextLine());
         }
         scanner.close();
+    } else if (choice == 2){
+        System.out.println(choice);
+        String urlString = String.format("https://api.telegram.org/bot%s/getUpdates", botToken);
+        URL url = new URL(urlString);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        InputStream stream = conn.getInputStream();
+        Scanner scanner = new Scanner(stream);
+        String responseBody = scanner.useDelimiter("\\A").next();
+        scanner.close();
+        conn.disconnect();
+        System.out.println(responseBody);
+
     }
-}*/
-import java.io.IOException;
+    }
+}
+/*import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -47,4 +69,4 @@ public class TelegramBot {
 
 
     }
-}
+}*/
